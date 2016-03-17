@@ -51,6 +51,7 @@
 
 }
 
+
 #pragma mark - setup basis offset
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView.contentOffset.x == 0) {
@@ -58,7 +59,6 @@
     }else if (scrollView.contentOffset.x < 0) {
         [self.popLeftButton animateToType:buttonBackType];
     }
-    scrollView.pagingEnabled = scrollView.contentOffset.x < - 74 ? NO : YES;
 }
 
 #pragma mark - menu view controller
@@ -88,8 +88,23 @@
     if (!_contentNaVC) {
         _contentNaVC = [[UINavigationController alloc] initWithRootViewController:self.contentVC];
         _contentNaVC.navigationBarHidden = YES;
+        
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScrollView:)];
+        [_contentNaVC.view addGestureRecognizer:tapGes];
     }
     return _contentNaVC;
+}
+
+#pragma tap gesture recognizer
+- (void)tapScrollView:(UITapGestureRecognizer *)sender {
+    __weak typeof(self) weakSelf = self;
+    if (weakSelf.scrollView) {
+        if (weakSelf.scrollView.contentOffset.x < 0) {
+            [UIView animateWithDuration:0.3 animations:^{
+                weakSelf.scrollView.contentOffset = CGPointMake(0, 0);
+            }];
+        }
+    }
 }
 
 - (ContentViewController *)contentVC {
