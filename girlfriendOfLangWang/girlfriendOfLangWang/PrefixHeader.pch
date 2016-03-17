@@ -1,0 +1,33 @@
+//
+//  PrefixHeader.pch
+//  girlfriendOfLangWang
+//
+//  Created by 王浩 on 16/3/2.
+//  Copyright © 2016年 wh-king.github.io. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import "MusicViewController.h"
+#import "MovieViewController.h"
+#import "CookViewController.h"
+#import "NearViewController.h"
+#import "PlayViewController.h"
+#import "RootViewController.h"
+#import <EAIntroView.h>
+#import <EAIntroPage.h>
+#import <VBFPopFlatButton.h>
+#import <ASValueTrackingSlider.h>
+#import <ASValuePopUpView.h>
+#import <AVFoundation/AVFoundation.h>
+
+#define BOUNDS  [UIScreen mainScreen].bounds
+#define WIDTH   [UIScreen mainScreen].bounds.size.width
+#define HEIGHT  [UIScreen mainScreen].bounds.size.height
+
+#endif
+
+#endif /* PrefixHeader_pch */
